@@ -15,7 +15,7 @@ At this time, this plugin is not part of the Jellyfin project. Use at your own r
 - Click _New Repository_, enter some name like _Prevent Sleep_ and add the following URL:
 
   ```url
-  https://raw.githubusercontent.com/jonschz/jellyfin-plugin-preventsleep/refs/heads/main/manifest.json
+  https://raw.githubusercontent.com/napa3um/jellyfin-plugin-preventsleep/refs/heads/main/manifest.json
   ```
 
 - Close the window and search for _Prevent Sleep_. You should then find the plugin. Click on it and install an appropriate version.
@@ -23,13 +23,13 @@ At this time, this plugin is not part of the Jellyfin project. Use at your own r
 
 ### Manual installation
 
-Compiled binaries can be downloaded under [Releases](https://github.com/jonschz/jellyfin-plugin-preventsleep/releases). Note that the most recent release only works with Jellyfin 10.9 or newer, and Jellyfin does not [automatically update itself](https://github.com/jellyfin/jellyfin-server-windows/issues/30). If you run into issues, check your Jellyfin version first.
+Compiled binaries can be downloaded under [Releases](https://github.com/napa3um/jellyfin-plugin-preventsleep/releases). Note that the most recent release only works with Jellyfin 10.9 or newer, and Jellyfin does not [automatically update itself](https://github.com/jellyfin/jellyfin-server-windows/issues/30). If you run into issues, check your Jellyfin version first.
 
 To install the compiled binary, download the `.dll`, go to your [plugin folder](https://jellyfin.org/docs/general/server/plugins/), create a subfolder `Jellyfin.Plugin.PreventSleep`, and paste the `.dll` inside. After a restart of Jellyfin, the plugin should be enabled.
 
 ## Known issues and limitations
 
-- Only Jellyfin Server running on Windows is supported. In particular, this plugin will not work on Linux, MacOS, or Jellyfin docker containers (regardless of the host OS).
+- Only Jellyfin Server running on Windows or macOS is supported. In particular, this plugin will not work on Linux or in Jellyfin docker containers (regardless of the host OS). On macOS, the plugin uses the built-in `caffeinate` utility to prevent sleep.
 - If the server runs Windows and supports Modern Standby (which applies to the vast majority of non-ancient Windows laptops), this plugin temporarily creates a Power Scheme to reliably prevent sleep while streaming. If this power scheme lingers after terminating Jellyfin, it can be deleted manually. See the [Windows-specific documentation](./docs/Windows.md).
 
 Please don't hesistate to report issues if you find any.

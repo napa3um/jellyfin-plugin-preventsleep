@@ -139,6 +139,11 @@ public class EventMonitorEntryPoint(ISessionManager sessionManager, ILoggerFacto
             }
         }
 
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            return new MacOsPowerManagement(_loggerFactory);
+        }
+
         _logger.LogError("Platform is not supported: {Platform}", RuntimeInformation.OSDescription);
 
         return null;
@@ -204,6 +209,7 @@ public class EventMonitorEntryPoint(ISessionManager sessionManager, ILoggerFacto
                 }
             }
 
+            (_powerManagement as IDisposable)?.Dispose();
             _powerManagement = null;
 
             _unblockTimer?.Dispose();
